@@ -1,0 +1,30 @@
+<div id="app">
+  <h2> Анализ пожарного датчика </h2>
+  
+  <p>Введите температуру в комнате: <input v-model="temperature" type="number" step="0.1"></p>
+  
+  <button @click="check">Проверить</button>
+  
+  <p>{{ message }}</p>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+Vue.createApp({
+  data() {
+    return {
+      temperature: 0,
+      message: ''
+    }
+  },
+  methods: {
+    check: function() {
+      if (this.temperature > 60) {
+        this.message = ' Пожарная ситуация!';
+      } else {
+        this.message = ' Температура в норме';
+      }
+    }
+  }
+}).mount('#app')
+</script>
